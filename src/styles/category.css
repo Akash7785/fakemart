@@ -1,0 +1,9 @@
+.filters{
+    margin: 2rem;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+.rangeFilter{
+    width: 50%;
+}
