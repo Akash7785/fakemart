@@ -36,3 +36,11 @@ h3{
 .radioGroup{
     display: flex;
 }
+.filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider{
+    width: 50%;
+}
