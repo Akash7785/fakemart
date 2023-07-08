@@ -1,0 +1,54 @@
+
+.cardContainer{
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: aqua; */
+}
+.ProductDeatilCard{
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding: 3rem 0 3rem 0;
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5rem;
+}
+.imageContainer>img{
+    height: 300px;
+
+}
+.Productdetails{
+    width: 50%;
+}
+.Productdetails>h3{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+
+    font-weight: 500;
+}
+.Productdetails>p{
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    margin-left: 0;
+
+}
+.Productdetails>button{
+    margin-top: 2rem;
+
+}
+.Productdetails>h4{
+    margin-left: 0;
+    font-family: "Roboto";
+    font-size: large;
+}
+.Productdetails>h4>span{
+    
+    font-size: 2rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    color: rgb(255, 110, 110);
+}

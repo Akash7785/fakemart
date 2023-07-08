@@ -1,12 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AboutUs from "./components/AboutUs";
 import Home from "./components/Home";
-import Contact from "./components/Contact";
-import Cart from "./components/Cart";
-import Login from "./components/Login";
+
 import Navbar from "./components/Navbar";
 import Categories from "./components/Categories";
 import Products from "./components/Products";
+import ProductDetail from "./components/ProductDetail";
 
 function App() {
   return (
@@ -17,9 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/products" element={<Products />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/cart" element={<Cart />} /> */}
+          <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
       </Router>
     </div>

@@ -16,12 +16,28 @@ const marks = [
     label: "₹100",
   },
   {
+    value: 200,
+    label: "₹200",
+  },
+  {
+    value: 300,
+    label: "₹300",
+  },
+  {
     value: 500,
     label: "₹500",
   },
   {
     value: 1000,
     label: "₹1000",
+  },
+  {
+    value: 1500,
+    label: "₹1500",
+  },
+  {
+    value: 2000,
+    label: "₹2000",
   },
 ];
 
@@ -31,29 +47,27 @@ function valueText(value) {
 
 const Products = () => {
   const [product, setProduct] = useState([]);
-  const [price, setNewPrice] = useState([10, 50]);
+  const [SliderPrice, setSliderPrice] = useState([10, 200]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [filterStatus, setFilterStatus] = useState(false);
 
   const newPrice = (event, newValue) => {
-    setNewPrice(newValue);
-
+    setSliderPrice(newValue);
     settedProduct(newValue[0], newValue[1]);
   };
 
   const settedProduct = (min, max) => {
-    console.log(min);
-    console.log(max);
-    const newItem = product.filter((newval) => {
-      return newval.price <= min || newval.price >= max;
+    const newItem = product.filter((newPrice) => {
+      return newPrice.price >= min && newPrice.price <= max;
     });
-    console.log("New array is ", newItem);
+    setFilteredData(newItem);
+    setFilterStatus(true);
   };
 
   useEffect(() => {
     const fetchProduct = async () => {
       const { data } = await axios.get(`${server}/products`);
-      // console.log(data);
       setProduct(data);
-      // settedProduct();
     };
     fetchProduct();
   }, []);
@@ -61,37 +75,53 @@ const Products = () => {
   return (
     <>
       <div className="filter">
+        <h2>Set Price</h2>
         <div className="slider">
           <Slider
             min={5}
             max={1000}
             getAriaLabel={() => "Temperature range"}
-            value={price}
+            value={SliderPrice}
             onChange={newPrice}
             valueLabelDisplay="auto"
             getAriaValueText={valueText}
             marks={marks}
+            step={100}
           />
         </div>
       </div>
-
-      {/* {
-        product.filter()
-      } */}
-
-      <div className="cardcontainer">
-        <div className="cardRender">
-          {product.map((i) => (
-            <ProductCard
-              key={i.id}
-              image={i.image}
-              title={i.title}
-              price={i.price}
-              category={i.category}
-            />
-          ))}
+      {filterStatus ? (
+        <div className="cardcontainer">
+          <div className="cardRender">
+            {filteredData.map((i) => (
+              <ProductCard
+                key={i.id}
+                image={i.image}
+                title={i.title}
+                price={i.price}
+                category={i.category}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="cardcontainer">
+            <div className="cardRender">
+              {product.map((i) => (
+                <ProductCard
+                  id={i.id}
+                  key={i.id}
+                  image={i.image}
+                  title={i.title}
+                  price={i.price}
+                  category={i.category}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

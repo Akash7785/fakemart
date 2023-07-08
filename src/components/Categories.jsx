@@ -29,7 +29,7 @@ const Categories = () => {
       <div className="filters">
         <div className="catfilter">
           <RadioGroup
-            defaultValue={"men's clothing"}
+            defaultValue={"jewelery"}
             onChange={handleCategory}
             name="radio-buttons-group"
           >
